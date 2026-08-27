@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Golden Thread</title>
+
+<!--
+  ============================================================================
+  HOW TO CUSTOMIZE THIS GIFT — read me first
+  ============================================================================
+  Everything personal lives in one place: the SIBLINGS object in the <script>
+  block near the bottom (search for "EDIT YOUR SIBLINGS HERE").
+
+  For each sister, fill in:
+    - name / nickname
+    - letter: the paragraph she unlocks at the end
+    - archive: pairs of "then" and "now" photo file paths
+    - embarrassing: photo file paths for the hidden nickname easter egg
+    - arguments: a few "your version vs her version" stories for the slider game
+
+  PHOTOS: put your image files in a folder named "images" right next to this
+  HTML file (e.g. images/riya-then-1.jpg). If a photo file is missing, this
+  page automatically shows an elegant placeholder swatch instead, so nothing
+  ever looks broken while you're still gathering photos.
+
+  THE EASTER EGG: whichever sister is selected, typing her nickname anywhere
+  on the page (just type the letters, no need to click into a box) triggers
+  the hidden montage.
+  ============================================================================
+-->
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ NAME GATE ============ -->
+<div id="gate">
+  <div class="thread-glyph">✦</div>
+  <h1>Before we begin</h1>
+  <p class="sub">Who's untying this thread today?</p>
+  <div class="names" id="name-buttons"></div>
+</div>
+
+<!-- ============ TYING RAKHI SCROLL INDICATOR ============ -->
+<div id="thread-canvas" aria-hidden="true">
+  <svg viewBox="0 0 100 150" preserveAspectRatio="xMidYMid meet">
+    <circle id="thread-loop-left" cx="35" cy="70" r="22" pathLength="100"/>
+    <circle id="thread-loop-right" cx="65" cy="70" r="22" pathLength="100"/>
+    <path id="thread-tail-left" d="M46,88 L37,130" pathLength="100"/>
+    <path id="thread-tail-right" d="M54,88 L63,130" pathLength="100"/>
+    <circle id="thread-knot" cx="50" cy="70" r="10"/>
+    <circle id="thread-knot-gem" cx="50" cy="70" r="3.4"/>
+  </svg>
+  <div class="thread-label" id="thread-label">pulling the thread…</div>
+</div>
+
+<!-- ============ EASTER EGG TRIGGER ============ -->
+<button id="egg-trigger" aria-label="Click for a surprise">
+  <span class="egg-trigger-icon">🥚</span>
+  <span class="egg-trigger-tip">click for a surprise 👆</span>
+</button>
+
+<!-- ============ HERO ============ -->
+<section id="hero">
+  <div class="rakhi-mark"></div>
+  <p class="eyebrow">For <span id="hero-name">you</span></p>
+  <h1>The Golden Thread</h1>
+  <p class="lede">A thread doesn't need to be strong to hold something together forever — it just needs to be tied with care. This one's for you, <span id="hero-name-2">sister</span>.</p>
+  <div class="scroll-hint">Scroll to pull the thread ↓</div>
+</section>
+
+<!-- ============ ARCHIVES ============ -->
+<section id="archives">
+  <p class="eyebrow reveal">Then &amp; Now</p>
+  <h2 class="reveal">The Archives</h2>
+  <p class="lede reveal">Hover over a memory. Some things change. Some, somehow, never do.</p>
+  <div class="archive-grid" id="archive-grid"></div>
+  <p class="archive-hint reveal">Hover to travel forward in time →</p>
+</section>
+
+<!-- ============ TUG OF WAR ============ -->
+<section id="tug">
+  <p class="eyebrow reveal">A Little Levity</p>
+  <h2 class="reveal">The Tug of War</h2>
+  <p class="lede reveal">Every sibling story has two sides. Drag to see both.</p>
+  <div class="duel" id="duel-container"></div>
+</section>
+
+<!-- ============ PROMISE / FINALE ============ -->
+<section id="promise">
+  <p class="eyebrow reveal">The Promise</p>
+  <h2 class="reveal">Every Thread Ends in a Knot</h2>
+  <p class="lede reveal">Pull to the very end, and tie it.</p>
+  <div class="rakhi-3d reveal">
+    <div class="ring"></div>
+    <div class="gem"></div>
+  </div>
+  <button id="accept-btn" class="reveal">Tie the knot</button>
+
+  <div id="letter-wrap">
+    <div id="letter-card">
+      <span id="letter-body"></span>
+      <span id="letter-signoff">— Appu</span>
+    </div>
+    <div class="knot-back" id="knot-back-wrap">
+      <button id="knot-back-btn">Tie a knot back →</button>
+      <div class="confirmed" id="knot-confirmed" style="display:none;">Knot received. He'll know. 🧵</div>
+    </div>
+  </div>
+</section>
+
+<footer>Happy Rakshabandhan ❤️❤️</footer>
+
+<!-- ============ EASTER EGG OVERLAY ============ -->
+<div id="egg-overlay">
+  <h3 id="egg-title">Gotcha!</h3>
+  <div class="egg-grid" id="egg-grid"></div>
+  <button id="egg-close">close, if embarrassed 😎😎</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
